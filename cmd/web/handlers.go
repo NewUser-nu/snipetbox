@@ -26,7 +26,6 @@ func home(w http.ResponseWriter, r *http.Request) {
 	// paths as a variadic parameter?
 	ts, err := template.ParseFiles(files...)
 	if err != nil {
-		fmt.Println(err, "HELLO2")
 		log.Print(err.Error())
 		http.Error(w, "Internal Server Error", 500)
 		return
@@ -35,7 +34,6 @@ func home(w http.ResponseWriter, r *http.Request) {
 	// template as the response body.
 	err = ts.ExecuteTemplate(w, "base", nil)
 	if err != nil {
-		fmt.Println(err, "HELLO")
 		log.Print(err.Error())
 		http.Error(w, "Internal Server Error", 500)
 	}
