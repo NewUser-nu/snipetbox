@@ -2,15 +2,9 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"runtime/debug"
 )
-
-type application struct {
-	errorLog *log.Logger
-	infoLog  *log.Logger
-}
 
 // The serverError helper writes an error message and stack trace to the errorLog,
 // then sends a generic 500 Internal Server Error response to the user.
