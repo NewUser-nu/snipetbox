@@ -20,13 +20,14 @@ type Snippet struct {
 type SnippetModel struct {
 	DB *sql.DB
 }
+
 // This will insert a new snippet into the database.
 func (m *SnippetModel) Insert(title string, content string, expires int) (int, error) {
 	// Write the SQL statement we want to execute. I've split it over two lines
 	// for readability (which is why it's surrounded with backquotes instead
 	// of normal double quotes).
 	stmt := `INSERT INTO snippets (title, content, created, expires)
-	VALUES(?, ?, UTC_TIMESTAMP(), DATE_ADD(UTC_TIMESTAMP(), INTERVAL ? DAY))`
+	VALUES (?, ?, datetime('now'), datetime('now', '+' || ? || ' days'))`
 	// Use the Exec() method on the embedded connection pool to execute the
 	// statement. The first parameter is the SQL statement, followed by the
 	// title, content and expiry values for the placeholder parameters. This
