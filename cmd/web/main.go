@@ -55,7 +55,7 @@ func main() {
 	}
 
 	// start server
-	infoLog.Printf("Start server on %s", *addr)
+	infoLog.Printf("Start server on http://localhost%s", *addr)
 	err = srv.ListenAndServe()
 	errorLog.Fatal(err)
 }
